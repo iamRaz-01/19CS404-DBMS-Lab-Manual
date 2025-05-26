@@ -1,4 +1,6 @@
 # Experiment 6: Joins
+### Name : Abdul Rasak N
+### Reg No : 212224240001
 
 ## AIM
 To study and implement different types of joins.
