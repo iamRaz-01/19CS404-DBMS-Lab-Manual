@@ -1,7 +1,7 @@
 # Experiment 4: Aggregate Functions, Group By and Having Clause
 
 ### Name : Abdul Rasak N 
-### Reg No : 21222424001
+### Reg No : 212224240001
 
 ## AIM
 To study and implement aggregate functions, GROUP BY, and HAVING clause with suitable examples.
