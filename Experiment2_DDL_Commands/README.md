@@ -1,4 +1,6 @@
 # Experiment 2: DDL Commands
+### Name :  Abdul Rasak N 
+### Reg No : 212224240001
 
 ## AIM
 To study and implement DDL commands and different types of constraints.
@@ -105,124 +107,207 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+ Create a table named Invoices with the following constraints:
+
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+DueDate as DATE should be greater than the InvoiceDate.
+Amount as REAL should be greater than 0.
 
 ```sql
--- Paste your SQL code below for Question 1
+create table Invoices (
+InvoiceID integer primary key,
+InvoiceDate date,
+DueDate date check( DueDate> InvoiceDate),
+Amount REAL check(Amount>0)
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/fd47060c-d10d-4ea6-a8a5-b1f9207c94cc)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Create a table named Attendance with the following constraints:
+AttendanceID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+AttendanceDate as DATE.
+Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
 
 ```sql
--- Paste your SQL code below for Question 2
+create table Attendance(
+AttendanceID integer primary key,
+EmployeeID integer ,
+AttendanceDate date,
+Status text check (Status in ('Present','Absent','Leave')),
+foreign key (EmployeeID) references Employees(EmployeeID)
+)
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/532be113-a80e-45b1-9fe8-b84747722016)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Insert a product with ProductID 104, Name Tablet, and Category Electronics into the Products table, where Price and Stock should use default values.
 
 ```sql
--- Paste your SQL code below for Question 3
+insert into Products ('ProductId','Name','Category') values (104,'Tablet','Electronics');
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/f21eac70-99ba-48f6-bcd7-b45a19191c75)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
-
+In the Employee table, insert a record where some fields are NULL, another record where all fields are filled without any NULL values, and a third record where some fields are filled, and others are left as NULL.
+```
+EmployeeID  Name          Position    Department  Salary
+----------  ------------  ----------  ----------  ----------
+5           George Clark  Consultant
+7           Noah Davis    Manager     HR          60000
+8           Ava Miller    Consultant  IT
+```
 ```sql
--- Paste your SQL code below for Question 4
+insert into Employee ('EmployeeID','Name','Position','Department','Salary') values
+(5,'George Clark','Consultant',null,null),
+(7,'Noah Davis','Manager','HR',60000),
+(8,'Ava Miller','Consultant','IT',null)
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/4c55bd4f-3e29-4fc4-97d0-03e080c1c1af)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write an SQL query to add two new columns, designation and net_salary, to the table Companies. The designation column should have a data type of varchar(50), and the net_salary column should have a data type of number.
 
 ```sql
--- Paste your SQL code below for Question 5
+alter table Companies add column designation varchar(50);
+alter table Companies add column net_salary number;
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/282d48b2-a26a-4854-8eac-fcc2ee71dda8)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a table named Invoices with the following constraints:
+InvoiceID as INTEGER should be the primary key.
+InvoiceDate as DATE.
+Amount as REAL should be greater than 0.
+DueDate as DATE should be greater than the InvoiceDate.
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 6
+create table Invoices(
+InvoiceID integer primary key,
+InvoiceDate date,
+Amount real check( Amount>0),
+DueDate date check(DueDate > InvoiceDate),
+OrderID integer,
+foreign key (OrderId) references Orders(OrderId)
+)
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/51afbd43-a61b-4cec-927e-8f24f1f7c1b6)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a table named Locations with the following columns:
+
+LocationID as INTEGER
+LocationName as TEXT
+Address as TEXT
 
 ```sql
--- Paste your SQL code below for Question 7
+create table Locations(
+LocationID INTEGER,
+LocationName TEXT,
+Address TEXT
+)
 ```
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/bb0318ec-2dcc-43de-bcf4-d5092c57841f)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write an SQL Query to add the attributes designation, net_salary, and dob to the Companies table with the following data types:
+designation as VARCHAR(50)
+net_salary as NUMBER
+dob as DATE
 
 ```sql
--- Paste your SQL code below for Question 8
+alter table Companies add column designation varchar(50);
+alter table Companies add column net_salary number;
+alter table Companies add column dob date;
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/523a75bb-84ee-474a-9554-af33830cc376)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Insert all products from Discontinued_products into Products.
+
+Table attributes are ProductID, ProductName, Price, Stock
 
 ```sql
--- Paste your SQL code below for Question 9
+insert into Products ('productID','ProductName','Price','Stock') 
+select productID, ProductName, Price, Stock from Discontinued_products;
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/446b5c3a-36fe-46cb-9594-9078ace77a49)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Employees with the following constraints:
+
+EmployeeID should be the primary key.
+FirstName and LastName should be NOT NULL.
+Email should be unique.
+Salary should be greater than 0.
+DepartmentID should be a foreign key referencing the Departments table.
 
 ```sql
--- Paste your SQL code below for Question 10
+create table Employees(
+EmployeeID integer primary key,
+FirstName varchar(50) not null,
+LastName varchar(50) not null,
+Email text UNIQUE,
+Salary check (Salary>0),
+DepartmentID integer,
+foreign key (DepartmentID) references Departments(DepartmentID)
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/dcf40a59-b440-49c8-b3fc-af4de501437d)
 
 
 ## RESULT
 Thus, the SQL queries to implement different types of constraints and DDL commands have been executed successfully.
+
+![image](https://github.com/user-attachments/assets/941c9436-584f-46ad-8680-9265033aefa3)
